@@ -13,8 +13,21 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+
+    'enums' => [],
+    'messages' => [
+        'you_have_successfully_logged_into_your_account' => 'You have successfully logged into your account',
+        'your_account_information_has_been_found' => 'Your account information has been found',
+        'you_have_successfully_logged_out' => 'You have successfully logged out'
+    ],
+    'validations' => [
+        'the_entered_mobile_phone_is_invalid' => 'The entered mobile phone is invalid'
+    ],
+    'errors' => [
+        'failed' => 'These credentials do not match our records.',
+        'password' => 'The provided password is incorrect.',
+        'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+        'an_authentication_error_occurred' => 'An authentication error occurred'
+    ],
 
 ];
