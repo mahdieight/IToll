@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DriverSeeder::class,
             CollectionSeeder::class,
+            OrderSeeder::class,
         ]);
     }
 }
