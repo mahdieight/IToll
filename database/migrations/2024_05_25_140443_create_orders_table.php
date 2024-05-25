@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId("collection_id")->constrained("collections")->onDelete("cascade")->onUpdate("cascade");
+            $table->string('tn')->unique()->comment('order tracking number');
             $table->enum('status', OrderStatusEnum::values());
 
             $table->string('source_address', config('rules.general.address.max'));
