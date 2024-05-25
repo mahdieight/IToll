@@ -19,5 +19,19 @@ return [
             "min" => 2,
             "max" => 70,
         ],
+        "address"     => [
+            "min" => 10,
+            "max" => 200,
+        ],
+        "name"     => [
+            "min" => 3,
+            "max" => 100,
+        ],
+    ],
+    'collection' => [
+        'webhook_url' => [
+            'min' => 20,
+            'max' => 220,
+        ],
     ],
 ];
