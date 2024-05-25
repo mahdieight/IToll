@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TripHistory extends Model
 {
     use HasFactory;
+
+    public function trip()
+    {
+        return $this->belongsTo(Trip::class);
+    }
 }
