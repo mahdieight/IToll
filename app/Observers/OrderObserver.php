@@ -2,10 +2,10 @@
 
 namespace App\Observers;
 
+use App\Enums\Order\OrderStatusEnum;
 use App\Models\Order;
 use App\Services\HelperService;
-use Carbon\Carbon;
-use Illuminate\Support\Str;
+
 
 
 class OrderObserver
@@ -19,7 +19,9 @@ class OrderObserver
 
     public function creating(Order $order)
     {
+        $order->collection_id = 1; //TEMP
         $order->tn = $this->helper->generateUniqeID("order", 'tn');
+        $order->status = OrderStatusEnum::WAITING_DRIVER;
     }
 
     /**
