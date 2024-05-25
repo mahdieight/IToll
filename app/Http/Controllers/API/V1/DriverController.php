@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
-use App\Models\Collection;
+use App\Http\Controllers\Controller;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 
-class CollectionController extends Controller
+class DriverController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class CollectionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Collection $collection)
+    public function show(Driver $driver)
     {
         //
     }
@@ -42,7 +43,7 @@ class CollectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Collection $collection)
+    public function edit(Driver $driver)
     {
         //
     }
@@ -50,7 +51,7 @@ class CollectionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Collection $collection)
+    public function update(Request $request, Driver $driver)
     {
         //
     }
@@ -58,7 +59,7 @@ class CollectionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Collection $collection)
+    public function destroy(Driver $driver)
     {
         //
     }
