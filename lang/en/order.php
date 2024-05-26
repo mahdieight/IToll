@@ -16,7 +16,8 @@ return [
     'enums' => [],
     'messages' => [
         'order_was_created_successfully' => 'The order was created successfully',
-        'order_was_successfully_cancelled' => 'The order was successfully cancelled'
+        'order_was_successfully_cancelled' => 'The order was successfully cancelled',
+        'list_of_orders_has_been_received_successfully' => 'List of orders has been received successfully'
     ],
     'validations' => [
     ],

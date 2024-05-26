@@ -23,12 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(["prefix" => "v1"], function () {
 
     Route::group(["middleware" => ['collection']], function () {
-        Route::post('/orders' ,  [OrderController::class , 'store']);
+        Route::post('/orders',  [OrderController::class, 'store']);
         Route::put('/orders/{order}/cancel', [OrderController::class, 'cancelOrder']);
-
     });
 
 
     Route::group(["middleware" => ['driver']], function () {
+        Route::get('/orders',  [OrderController::class, 'index']);
+
     });
 });

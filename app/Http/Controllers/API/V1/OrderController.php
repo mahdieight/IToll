@@ -6,6 +6,7 @@ use App\Contracts\Controller\API\V1\OrderControllerInterface;
 use App\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderStoreRequest;
+use App\Http\Resources\OrderCollection;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use App\Services\OrderService;
@@ -17,6 +18,12 @@ class OrderController extends Controller implements OrderControllerInterface
     {
     }
 
+    public function index(Request $request)
+    {
+        $orders = $this->service->getPenddingOrderList();
+
+        return Response::message('order.messages.list_of_orders_has_been_received_successfully')->data(new OrderCollection($orders))->toResponse($request);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +41,5 @@ class OrderController extends Controller implements OrderControllerInterface
         $order = $this->service->cancelOrder($request, $order);
 
         return Response::message('order.messages.order_was_successfully_cancelled')->data(new OrderResource($order))->toResponse($request);
-
     }
 }

@@ -47,4 +47,9 @@ class OrderService
 
         return $order;
     }
+
+    public function getPenddingOrderList()
+    {
+        return  Order::whereStatus(OrderStatusEnum::WAITING_DRIVER)->paginate();
+    }
 }
