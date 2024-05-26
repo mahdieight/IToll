@@ -20,6 +20,7 @@ return [
     'validations' => [
     ],
     'errors' => [
+        'order_is_duplicated' => 'The order you are about to register is a duplicate'
     ],
 
 ];
