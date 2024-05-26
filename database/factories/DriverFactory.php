@@ -26,6 +26,7 @@ class DriverFactory extends Factory
             'phone' => fake()->numerify('021####'),
             'gender' => fake()->randomElement(GenderEnum::values()),
             'vehicle_type' => fake()->randomElement(VehicleTypeEnum::values()),
+            'token' => fake()->asciify('********************'),
         ];
     }
 }

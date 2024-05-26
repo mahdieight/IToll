@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('webhook_url', config('rules.collection.webhook_url.max'));
             $table->enum('status' , CollectionStatusEnum::values());
             $table->timestamp('blocked_at')->nullable();
+            $table->string('token')->unique();
             $table->json('order_statistics')->default(json_encode(['total' => 0, 'successful' => 0, 'canceled' => 0 ]));
             $table->timestamp('last_order_date')->nullable();
             $table->timestamps();

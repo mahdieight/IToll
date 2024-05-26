@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('mobile', config("rules.general.mobile.digits"));
             $table->string('phone', config("rules.general.phone.max"))->nullable();
             $table->enum('gender', GenderEnum::values());
+            $table->string('token')->unique();
             $table->enum('vehicle_type', VehicleTypeEnum::values());
             $table->json('trip_statistics')->default(json_encode(['total' => 0, 'successful' => 0, 'canceled' => 0]));
             $table->date('date_of_birth')->nullable();

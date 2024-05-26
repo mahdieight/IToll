@@ -23,6 +23,7 @@ class CollectionFactory extends Factory
             'address' => fake()->address(),
             'status' => fake()->randomElement(CollectionStatusEnum::values()),
             'webhook_url' => fake()->url(),
+            'token' => fake()->asciify('********************'),
         ];
     }
 }
