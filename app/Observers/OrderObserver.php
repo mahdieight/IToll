@@ -20,7 +20,7 @@ class OrderObserver
     public function creating(Order $order)
     {
         $order->tn = $this->helper->generateUniqeID("order", 'tn');
-        $order->status = OrderStatusEnum::WAITING_DRIVER;
+        // $order->status = OrderStatusEnum::WAITING_DRIVER;
     }
 
     /**

@@ -24,6 +24,8 @@ Route::group(["prefix" => "v1"], function () {
 
     Route::group(["middleware" => ['collection']], function () {
         Route::post('/orders' ,  [OrderController::class , 'store']);
+        Route::put('/orders/{order}/cancel', [OrderController::class, 'cancelOrder']);
+
     });
 
 
