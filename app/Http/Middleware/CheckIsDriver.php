@@ -17,7 +17,7 @@ class CheckIsDriver
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $token = $request->header('Authorization');
+        $token = $request->headers->get('Authorization');
         if (!$driver = Driver::whereToken($token)->first()) {
             return throw new UnauthorizedException();
         }
