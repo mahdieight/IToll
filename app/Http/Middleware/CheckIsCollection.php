@@ -18,9 +18,7 @@ class CheckIsCollection
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->headers->get('Authorization');
-        if (!$collection = Collection::whereToken( $token)->first()) {
-            return throw new UnauthorizedException();
-        }
+        if (!$collection = Collection::whereToken( $token)->first()) return throw new UnauthorizedException();
 
         $request->merge(['collection' => $collection]);
 
