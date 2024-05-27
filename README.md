@@ -50,3 +50,6 @@ To enable job queues for broadcasting webhooks in Laravel, you need to use the q
 By running the command `php artisan l5-swagger:generate`, your Swagger documentation will be available at the following address.
 
 `http://{host}:{app_port}/api/documentation`
+
+## Postman Collection
+By importing the `ITool.postman_collection` file into `Postman`, you can easily test the APIs. This file is available in the project root.
