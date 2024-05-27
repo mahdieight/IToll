@@ -30,6 +30,6 @@ Route::group(["prefix" => "v1"], function () {
 
     Route::group(["middleware" => ['driver']], function () {
         Route::get('/orders',  [OrderController::class, 'index']);
-
+        Route::put('/orders/{order}/assign' ,[OrderController::class, 'assign']);
     });
 });

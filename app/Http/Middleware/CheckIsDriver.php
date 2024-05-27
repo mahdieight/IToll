@@ -21,7 +21,6 @@ class CheckIsDriver
         if (!$driver = Driver::whereToken($token)->first()) {
             return throw new UnauthorizedException();
         }
-
         $request->merge(['driver' => $driver]);
 
         return $next($request);

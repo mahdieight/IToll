@@ -42,4 +42,11 @@ class OrderController extends Controller implements OrderControllerInterface
 
         return Response::message('order.messages.order_was_successfully_cancelled')->data(new OrderResource($order))->toResponse($request);
     }
+
+    public function assign(Request $request, Order $order)
+    {
+        $order = $this->service->assignToDeliver($request, $order);
+
+        return Response::message('order.messages.order_was_successfully_assigned')->data(new OrderResource($order))->toResponse($request);
+    }
 }

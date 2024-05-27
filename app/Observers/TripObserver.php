@@ -2,13 +2,11 @@
 
 namespace App\Observers;
 
-use App\Enums\Order\OrderStatusEnum;
-use App\Models\Order;
+use App\Models\Trip;
 use App\Services\HelperService;
+use Carbon\Carbon;
 
-
-
-class OrderObserver
+class TripObserver
 {
 
     public function __construct(
@@ -17,16 +15,16 @@ class OrderObserver
     }
 
 
-    public function creating(Order $order)
+    public function creating(Trip $trip)
     {
-        $order->tn = $this->helper->generateUniqeID("order", 'tn');
-        $order->status = OrderStatusEnum::WAITING_DRIVER;
+        $trip->start_at = Carbon::now();
+        $trip->fare = rand(100, 1000);
     }
 
     /**
      * Handle the Order "created" event.
      */
-    public function created(Order $order): void
+    public function created(Trip $trip): void
     {
         //
     }
@@ -34,7 +32,7 @@ class OrderObserver
     /**
      * Handle the Order "updated" event.
      */
-    public function updated(Order $order): void
+    public function updated(Trip $trip): void
     {
         //
     }
@@ -42,7 +40,7 @@ class OrderObserver
     /**
      * Handle the Order "deleted" event.
      */
-    public function deleted(Order $order): void
+    public function deleted(Trip $trip): void
     {
         //
     }
@@ -50,7 +48,7 @@ class OrderObserver
     /**
      * Handle the Order "restored" event.
      */
-    public function restored(Order $order): void
+    public function restored(Trip $trip): void
     {
         //
     }
@@ -58,7 +56,7 @@ class OrderObserver
     /**
      * Handle the Order "force deleted" event.
      */
-    public function forceDeleted(Order $order): void
+    public function forceDeleted(Trip $trip): void
     {
         //
     }

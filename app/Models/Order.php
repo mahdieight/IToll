@@ -24,6 +24,7 @@ class Order extends Model
         'receiver_name',
         'receiver_mobile',
         'status',
+        'trip_id',
     ];
 
     protected $casts = [

@@ -11,6 +11,13 @@ class Trip extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'order_id',
+        'status',
+        'fare',
+        'start_at',
+    ];
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
