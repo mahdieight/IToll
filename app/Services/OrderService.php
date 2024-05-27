@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\Order\OrderStatusEnum;
 use App\Events\OrderDriverAssigned;
+use App\Events\OrderStatusChanged;
 use App\Exceptions\BadRequestException;
 use App\Http\Requests\OrderStoreRequest;
 use App\Models\Order;
@@ -66,8 +67,8 @@ class OrderService
             $order->lockForUpdate();
 
             $order->update(['driver_id' => $request->driver->id, 'status' => OrderStatusEnum::ASSIGNED]);
-
             OrderDriverAssigned::dispatch($order, $request->driver);
+            OrderStatusChanged::dispatch($order);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();

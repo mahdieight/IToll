@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\OrderDriverAssigned;
+use App\Events\OrderStatusChanged;
 use App\Listeners\CreateTrip;
+use App\Listeners\OrderStatusChangedListener;
 use App\Models\Order;
 use App\Models\Trip;
 use App\Observers\OrderObserver;
@@ -26,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         OrderDriverAssigned::class => [
             CreateTrip::class,
+        ],
+        OrderStatusChanged::class => [
+            OrderStatusChangedListener::class,
         ],
     ];
 
