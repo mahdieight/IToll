@@ -8,6 +8,7 @@ use App\Events\OrderStatusChanged;
 use App\Exceptions\BadRequestException;
 use App\Http\Requests\OrderStoreRequest;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -85,6 +86,7 @@ class OrderService
         if ($order->status != OrderStatusEnum::ASSIGNED)  throw new BadRequestException('can_not_deliver_this_order');
 
         $order->update(['status' => OrderStatusEnum::DELIVERED]);
+        $order->trip()->update(['end_at' => Carbon::now()]);
         OrderStatusChanged::dispatch($order);
 
         return $order;
