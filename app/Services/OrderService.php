@@ -59,7 +59,7 @@ class OrderService
     public function assignToDeliver(Request $request, Order $order)
     {
 
-        if ($order->status != OrderStatusEnum::WAITING_DRIVER)  throw new BadRequestException('This order is already assigned to a driver');
+        if ($order->status != OrderStatusEnum::WAITING_DRIVER)  throw new BadRequestException('order_already_assigned_driver');
 
         DB::beginTransaction();
 
@@ -74,6 +74,18 @@ class OrderService
             DB::rollback();
             return throw new BadRequestException();
         }
+
+        return $order;
+    }
+
+    public function orderDelivered(Request $request, Order $order)
+    {
+        if ($request->driver->id != $order->trip->driver_id) return throw new BadRequestException('order.errors.not_allowed_operate_on_the_orders_others');
+
+        if ($order->status != OrderStatusEnum::ASSIGNED)  throw new BadRequestException('can_not_deliver_this_order');
+
+        $order->update(['status' => OrderStatusEnum::DELIVERED]);
+        OrderStatusChanged::dispatch($order);
 
         return $order;
     }

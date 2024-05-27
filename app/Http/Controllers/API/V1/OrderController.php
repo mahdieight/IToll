@@ -49,4 +49,11 @@ class OrderController extends Controller implements OrderControllerInterface
 
         return Response::message('order.messages.order_was_successfully_assigned')->data(new OrderResource($order))->toResponse($request);
     }
+
+    public function delivered(Request $request, Order $order)
+    {
+        $order = $this->service->orderDelivered($request, $order);
+
+        return Response::message('order.messages.order_was_successfully_delivered')->data(new OrderResource($order))->toResponse($request);
+    }
 }

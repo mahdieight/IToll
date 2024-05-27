@@ -32,9 +32,9 @@ class Order extends Model
     ];
 
 
-    public function trips(): HasMany
+    public function trip(): belongsTo
     {
-        return $this->hasMany(Trip::class);
+        return $this->belongsTo(Trip::class);
     }
 
     public function collection(): BelongsTo
